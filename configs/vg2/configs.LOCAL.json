@@ -1,4 +1,5 @@
 {
   "env": "LOCAL",
-  "baseUrl": "http://l2-langlive-simulator.lumigame.com"
+  "baseUrl": "http://l2-langlive-simulator.lumigame.com",
+  "port": 5000
 } 

@@ -1,4 +1,5 @@
 {
   "env": "UAT",
-  "baseUrl": "https://l2-langlive-simulator-uat.sgamesuat.com"
+  "baseUrl": "https://l2-langlive-simulator-uat.sgamesuat.com",
+  "port": 5000
 } 

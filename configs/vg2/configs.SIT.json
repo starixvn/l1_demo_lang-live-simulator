@@ -1,4 +1,5 @@
 {
   "env": "SIT",
-  "baseUrl": "https://l2-langlive-simulator-sit.sgamesuat.com"
+  "baseUrl": "https://l2-langlive-simulator-sit.sgamesuat.com",
+  "port": 5000
 } 
