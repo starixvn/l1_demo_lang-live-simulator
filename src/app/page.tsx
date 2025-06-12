@@ -22,7 +22,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative w-full h-screen overflow-hidden">
+    <main className="relative w-full h-screen overflow-hidden max-w-sm min-w-xs mx-auto bg-black">
       <Image
         src="/lang-live-demo-bg.png"
         alt="background"
