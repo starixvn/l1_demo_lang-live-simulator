@@ -30,6 +30,7 @@ export async function POST(request: Request) {
       },
       operatorToken: "PFFToken",
       isCash: true,
+      ref: "m_direct",
     };
 
     // Validate the incoming configuration
