@@ -1,5 +1,7 @@
 {
-  "env": "LOCAL_2",
+  "env": "LOCAL-2",
   "baseUrl": "http://l2-langlive-simulator2.lumigame.com",
-  "port": 5000
-} 
+  "port": 5000,
+  "simulatorUrl": "http://l2-game-lobby-simulator-LOCAL2-service:5000",
+  "owApiUrl": "http://l2-ow-api-simulator-LOCAL2-service:5000/SabaClub"
+}

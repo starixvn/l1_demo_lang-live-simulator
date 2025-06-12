@@ -1,7 +1,11 @@
+import configJson from "./configs.json";
+
 const configs = {
-  env: process.env.NODE_ENV || "DEV",
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-  port: process.env.PORT || 3000,
+  env: configJson.env || "DEV",
+  baseUrl: configJson.baseUrl || "http://localhost:3000",
+  port: configJson.port || 3000,
+  simulatorUrl: configJson.simulatorUrl || "https://l2-glbs1.lumigame.com",
+  owApiUrl: configJson.owApiUrl || "https://l2-ows1.lumigame.com/SabaClub",
 };
 
-export default configs; 
+export default configs;

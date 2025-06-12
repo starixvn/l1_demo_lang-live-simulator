@@ -1,10 +1,21 @@
 "use client";
 
+import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [isIframeVisible, setIsIframeVisible] = useState(true);
+  const [isIframeVisible, setIsIframeVisible] = useState(false);
+  const [url, setUrl] = useState("");
+  const [playerId, setPlayerId] = useState<string>("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const playerIdFromQuery = params.get("playerId");
+    if (playerIdFromQuery) {
+      setPlayerId(playerIdFromQuery);
+    }
+  }, []);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -18,7 +29,23 @@ export default function Home() {
   }, []);
 
   const handleOpen = () => {
-    setIsIframeVisible(true);
+    axios
+      .post("/api/sign-in", {
+        playerId,
+        gameId: 134,
+        language: "en-US",
+        currency: "INH",
+        operatorId: "ONEworksVGCash",
+        operatorSecret: "VG@SC123",
+      })
+      .then((response) => {
+        const { redirectUrl } = response.data;
+        setUrl(redirectUrl);
+        setIsIframeVisible(true);
+      })
+      .catch((error) => {
+        console.error("Error signing in:", error);
+      });
   };
 
   return (
@@ -44,17 +71,39 @@ export default function Home() {
 
       {/* Overlay container without background tint */}
       {isIframeVisible && (
-        <div className="absolute left-0 right-0 bottom-0 h-[386px]">
-          <iframe
-            src="/demo"
-            className="w-full h-full"
-            style={{
-              background: "transparent",
-              backdropFilter: "none",
-            }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+        <div>
+          <button
+            onClick={() => setIsIframeVisible(false)}
+            className="absolute bottom-[400px] left-4 p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors hover:cursor-pointer"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <div className="absolute left-0 right-0 bottom-0 h-[386px]">
+            <iframe
+              src={url}
+              className="w-full h-full"
+              style={{
+                background: "transparent",
+                backdropFilter: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
       )}
     </main>
