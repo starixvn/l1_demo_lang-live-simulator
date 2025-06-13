@@ -79,10 +79,10 @@ export default function Home() {
 
       {/* Overlay container without background tint */}
       {isIframeVisible && (
-        <div>
+        <div className="absolute left-0 right-0 bottom-0">
           <button
             onClick={() => setIsIframeVisible(false)}
-            className="absolute bottom-[400px] left-4 p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors hover:cursor-pointer"
+            className="absolute top-[-35px] left-4 p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors hover:cursor-pointer"
             aria-label="Close"
           >
             <svg
@@ -100,21 +100,20 @@ export default function Home() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-          <div className="absolute left-0 right-0 bottom-0">
-            <iframe
-              src={url}
-              className="w-full h-full"
-              style={{
-                background: "transparent",
-                backdropFilter: "none",
-                aspectRatio: `${IframeResolution.width} / ${IframeResolution.height}`,
-                width: "100%",
-                height: "auto",
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+          <iframe
+            src={url}
+            title="Game Demo"
+            className="w-full h-full"
+            style={{
+              background: "transparent",
+              backdropFilter: "none",
+              aspectRatio: `${IframeResolution.width} / ${IframeResolution.height}`,
+              width: "100%",
+              height: "auto",
+            }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       )}
     </main>

@@ -33,9 +33,10 @@ export async function POST(request: Request) {
       ref: "m_direct",
     };
 
+    const operator = operatorId === "PFF" ? "pff" : "ow";
     // Validate the incoming configuration
     const responseBalance = await axios.post(
-      `${configs.owApiUrl}/SetDefaultBalance?playerId=${id}&operator=ow&balance=20000&siteId=4100300`
+      `${configs.owApiUrl}/SetDefaultBalance?playerId=${id}&operator=${operator}&balance=20000&siteId=4100300`
     );
     if (responseBalance.status !== 200) {
       return;
