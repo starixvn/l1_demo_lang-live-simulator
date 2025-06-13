@@ -5,6 +5,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import configs from "../../configs";
 
+const IframeResolution = {
+  width: 930,
+  height: 786,
+};
+
 export default function Home() {
   const [isIframeVisible, setIsIframeVisible] = useState(false);
   const [url, setUrl] = useState("");
@@ -95,13 +100,16 @@ export default function Home() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-          <div className="absolute left-0 right-0 bottom-0 h-[386px]">
+          <div className="absolute left-0 right-0 bottom-0">
             <iframe
               src={url}
               className="w-full h-full"
               style={{
                 background: "transparent",
                 backdropFilter: "none",
+                aspectRatio: `${IframeResolution.width} / ${IframeResolution.height}`,
+                width: "100%",
+                height: "auto",
               }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
