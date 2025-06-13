@@ -82,7 +82,7 @@ export default function Home() {
         <div className="absolute left-0 right-0 bottom-0">
           <button
             onClick={() => setIsIframeVisible(false)}
-            className="absolute top-[-35px] left-4 p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors hover:cursor-pointer"
+            className="absolute top-[-35px] left-4 p-2 rounded-full bg-gradient-to-r from-red-500 to-yellow-400 hover:from-red-400 hover:to-yellow-300 transition-all hover:cursor-pointer shadow-lg hover:shadow-red-500/50"
             aria-label="Close"
           >
             <svg
@@ -91,10 +91,11 @@ export default function Home() {
               height="18"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
+              stroke="white"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="drop-shadow-[0_0_2px_rgba(255,255,255,0.5)]"
             >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
