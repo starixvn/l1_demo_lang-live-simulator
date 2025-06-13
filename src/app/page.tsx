@@ -3,11 +3,14 @@
 import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import configs from "../../configs";
 
 export default function Home() {
   const [isIframeVisible, setIsIframeVisible] = useState(false);
   const [url, setUrl] = useState("");
-  const [playerId, setPlayerId] = useState<string>("");
+  const [playerId, setPlayerId] = useState<string>(
+    Math.floor(Math.random() * 10000000).toString()
+  );
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -35,8 +38,8 @@ export default function Home() {
         gameId: 134,
         language: "en-US",
         currency: "INH",
-        operatorId: "ONEworksVGCash",
-        operatorSecret: "VG@SC123",
+        operatorId: configs.operatorId,
+        operatorSecret: configs.operatorSecret,
       })
       .then((response) => {
         const { redirectUrl } = response.data;
