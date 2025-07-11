@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       domain: "example.com",
       browserUserAgent,
       currency: currency || "UUS",
-      language: language || "en-US",
+      language: "zh-TW",
       ip: "0",
       playerId: id,
       playerName: `username_${id}`,

@@ -41,7 +41,7 @@ export default function Home() {
       .post("/api/sign-in", {
         playerId,
         gameId: 134,
-        language: "en-US",
+        language: "zh-TW",
         currency: "INH",
         operatorId: configs.operatorId,
         operatorSecret: configs.operatorSecret,
