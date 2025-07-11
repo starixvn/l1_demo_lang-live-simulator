@@ -16,6 +16,7 @@ export default function Home() {
   const [playerId, setPlayerId] = useState<string>(
     Math.floor(Math.random() * 10000000).toString()
   );
+  const [iframeHeight, setIframeHeight] = useState(386); // default for 852px device
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,6 +35,15 @@ export default function Home() {
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setIframeHeight(window.innerHeight * 0.4536);
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   const handleOpen = () => {
@@ -110,7 +120,7 @@ export default function Home() {
               backdropFilter: "none",
               aspectRatio: `${IframeResolution.width} / ${IframeResolution.height}`,
               width: "100%",
-              height: "auto",
+              height: `${window.innerHeight * 0.4536}px`,
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
