@@ -89,8 +89,8 @@ export default function Home() {
 
       {/* Overlay container without background tint */}
       {isIframeVisible && (
-        <div className="absolute left-0 right-0 bottom-0">
-          <button
+        <div className="absolute left-0 right-0 bottom-0 h-full w-full">
+          {/* <button
             onClick={() => setIsIframeVisible(false)}
             className="absolute top-[-35px] left-4 p-2 rounded-full bg-gradient-to-r from-red-500 to-yellow-400 hover:from-red-400 hover:to-yellow-300 transition-all hover:cursor-pointer shadow-lg hover:shadow-red-500/50"
             aria-label="Close"
@@ -110,7 +110,7 @@ export default function Home() {
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
-          </button>
+          </button> */}
           <iframe
             src={url}
             title="Game Demo"
@@ -118,9 +118,8 @@ export default function Home() {
             style={{
               background: "transparent",
               backdropFilter: "none",
-              aspectRatio: `${IframeResolution.width} / ${IframeResolution.height}`,
               width: "100%",
-              height: `${window.innerHeight * 0.4536}px`,
+              height: `100%`,
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
