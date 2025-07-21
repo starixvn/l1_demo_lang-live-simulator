@@ -31,6 +31,9 @@ export async function POST(request: Request) {
       operatorToken: "PFFToken",
       isCash: true,
       ref: "m_direct",
+      playerNickname: `nickname_${id}`,
+      playerAvatarUrl:
+        "https://assets.lang.live/gift/fedffb919a921cfab98660bb2400cb07",
     };
 
     const operator = operatorId === "PFF" ? "pff" : "ow";
