@@ -5,18 +5,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import configs from "../../configs";
 
-const IframeResolution = {
-  width: 930,
-  height: 786,
-};
-
 export default function Home() {
   const [isIframeVisible, setIsIframeVisible] = useState(false);
   const [url, setUrl] = useState("");
   const [playerId, setPlayerId] = useState<string>(
     Math.floor(Math.random() * 10000000).toString()
   );
-  const [iframeHeight, setIframeHeight] = useState(386); // default for 852px device
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -28,22 +22,13 @@ export default function Home() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (event.data?.type === "CLOSE_IFRAME") {
+      if (event.data?.type === "close") {
         setIsIframeVisible(false);
       }
     };
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, []);
-
-  useEffect(() => {
-    const updateHeight = () => {
-      setIframeHeight(window.innerHeight * 0.4536);
-    };
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   const handleOpen = () => {
